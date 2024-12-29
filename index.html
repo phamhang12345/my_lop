@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lớp Love của Hằng (12A2)</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('https://i.pinimg.com/736x/d1/ac/05/d1ac05c949c9a2d6746d736364e5e118.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        header {
+            text-align: center;
+            padding: 50px 20px;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        header h1 {
+            font-size: 60px;
+            font-weight: bold;
+            font-family: 'Dancing Script', cursive;
+            margin: 0;
+            color: #ff69b4;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header h1::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.2));
+            top: 0;
+            left: 0;
+            animation: sway 3s ease-in-out infinite;
+        }
+
+        @keyframes sway {
+            0%, 100% {
+                transform: translateX(-10%) rotate(1deg);
+            }
+            50% {
+                transform: translateX(10%) rotate(-1deg);
+            }
+        }
+
+        header p {
+            font-size: 18px;
+            margin-top: 10px;
+            font-style: italic;
+            color: #ff69b4;
+        }
+
+        main {
+            padding: 40px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            color: #1e90ff; /* Màu xanh dương */
+            margin-bottom: 40px;
+            font-family: 'Dancing Script', cursive;
+            text-decoration: underline;
+        }
+
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            gap: 30px;
+            margin-top: 40px;
+            animation: move 5s ease-in-out infinite;
+        }
+
+        @keyframes move {
+            0%, 100% {
+                transform: translateX(0);
+            }
+            50% {
+                transform: translateX(10px);
+            }
+        }
+
+        .gallery-item {
+            width: 280px;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
+            text-align: center;
+            padding: 10px;
+            border: 4px solid #fff; /* Viền trắng dày */
+            transition: transform 0.3s ease-in-out;
+            cursor: pointer; /* Thêm con trỏ chuột */
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .gallery-item p {
+            margin-top: 15px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #ff69b4;
+        }
+
+        /* Style cho modal */
+        .modal {
+            display: none; /* Ẩn modal mặc định */
+            position: fixed;
+            z-index: 1;
+            padding-top: 100px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.9); /* Nền đen */
+        }
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+        }
+
+        /* Close button */
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 25px;
+            color: #fff;
+            font-size: 35px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #ff69b4;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* Video styling */
+        .video-container {
+            display: flex;
+            justify-content: space-around;
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .video-item {
+            width: 45%;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            padding: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
+            border: 4px solid #fff; /* Viền trắng dày */
+            text-align: center;
+        }
+
+        .video-item iframe {
+            width: 100%;
+            height: 200px;
+            border-radius: 10px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Lớp Love của Hằng (12A2)</h1>
+        <p>Chúng ta luôn là một gia đình, những kỷ niệm sẽ mãi lưu lại trong trái tim mỗi người!</p>
+    </header>
+
+    <main>
+        <h2 class="section-title">Những Khoảnh Khắc Đẹp</h2>
+        <div class="gallery">
+            <!-- Mục 1 -->
+            <div class="gallery-item" onclick="openModal('img1')">
+                <img src="https://i.pinimg.com/736x/64/26/6d/64266d5baddf36a24b6ac0b0ef54c273.jpg" alt="Hình ảnh 1" id="img1">
+                <p>Đây là bức ảnh đầu năm học ngày Khai Giảng</p>
+            </div>
+
+            <!-- Mục 2 -->
+            <div class="gallery-item" onclick="openModal('img2')">
+                <img src="https://i.pinimg.com/736x/c0/0b/98/c00b98e1b2d8186d945b217ad3fcc2e0.jpg" alt="Hình ảnh 2" id="img2">
+                <p>Hình ảnh người bạn cũ Kiên Cường phải rời xa lớp để du học.</p>
+            </div>
+
+            <!-- Mục 3 -->
+            <div class="gallery-item" onclick="openModal('img3')">
+                <img src="https://i.pinimg.com/736x/97/f4/8a/97f48ab818113ab03430b9bef7fabbc0.jpg" alt="Hình ảnh 3" id="img3">
+                <p>Tổ chức ngày 19/11 cho các bạn nam.</p>
+            </div>
+
+            <!-- Mục 4 -->
+            <div class="gallery-item" onclick="openModal('img4')">
+                <img src="https://i.pinimg.com/736x/0b/bc/c7/0bbcc745e95e0c8770d1f82c01238ca7.jpg" alt="Hình ảnh 4" id="img4">
+                <p>Chuyến đi dã ngoại Vũng Chùa-Đảo Yến.</p>
+            </div>
+
+            <!-- Mục 5: Ảnh bổ sung -->
+            <div class="gallery-item" onclick="openModal('img5')">
+                <img src="https://i.pinimg.com/736x/ed/a9/f0/eda9f07e2b6be66ed1344048ec5bf740.jpg" alt="Hình ảnh bổ sung" id="img5">
+                <p>Lớp tớ ở đài truyền hình Quảng Bình.</p>
+            </div>
+        </div>
+
+        <!-- Modal for Image Viewing -->
+        <div id="myModal" class="modal">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <img class="modal-content" id="img01">
+        </div>
+
+        <!-- Video Section -->
+        <div class="video-container">
+            <!-- Video 1 -->
+            <div class="video-item">
+                <iframe src="https://www.youtube.com/embed/QvGfwiixaxk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <p>các bạn nam làm video chúc 20/10 chị em 12a2!!!!!</p>
+            </div>
+
+            <!-- Video 2 -->
+            <div class="video-item">
+                <iframe src="https://www.youtube.com/embed/39T26dV6mew" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <p>dễ thương quá!!!!!</p>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer removed as per your request -->
+    <!-- <footer>
+        <p>© 2024 Lớp Love của Hằng (12A2). Tất cả quyền được bảo vệ.</p>
+    </footer> -->
+
+    <script>
+        // Function to open the modal with the image
+        function openModal(imgId) {
+            var modal = document.getElementById("myModal");
+            var modalImg = document.getElementById("img01");
+            var img = document.getElementById(imgId);
+            modal.style.display = "block";
+            modalImg.src = img.src;
+        }
+
+        // Function to close the modal
+        function closeModal() {
+            var modal = document.getElementById("myModal");
+            modal.style.display = "none";
+        }
+    </script>
+</body>
+</html>
